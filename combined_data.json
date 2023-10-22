@@ -5530,7 +5530,7 @@
    {
       "problem_name": "Maximum Number of Balls in a Box",
       "company": ["AppDynamics", "Microsoft"],
-      "num_occur": ["Lucid", "2"]
+      "num_occur": [0, "2"]
    },
    {
       "problem_name": "Check if Numbers Are Ascending in a Sentence",

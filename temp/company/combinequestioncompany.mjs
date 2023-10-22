@@ -20,27 +20,38 @@ async function addCompanyQuestion(problemName, companies, numOccurs) {
                });
 
                if (company) {
-                  const count = parseInt(numOccurs[i], 10);
-                  if (!isNaN(count)) {
-                     await prisma.companyQuestion.create({
-                        data: {
-                           company: {
-                              connect: { id: company.id },
-                           },
-                           question: {
-                              connect: { id: question.id },
-                           },
-                           count: count,
+                  const companyQuestion =
+                     await prisma.companyQuestion.findFirst({
+                        where: {
+                           AND: [
+                              { companyId: company.id },
+                              { questionId: question.id },
+                           ],
                         },
                      });
+                  if (!companyQuestion) {
+                     const count = parseInt(numOccurs[i], 10);
+                     if (!isNaN(count)) {
+                        await prisma.companyQuestion.create({
+                           data: {
+                              company: {
+                                 connect: { id: company.id },
+                              },
+                              question: {
+                                 connect: { id: question.id },
+                              },
+                              count: count,
+                           },
+                        });
 
-                     // console.log(
-                     //    `Added data: ${problemName} ${companyName} ${count}`
-                     // );
-                  } else {
-                     console.error(
-                        `Invalid count value for ${problemName} ${companyName}`
-                     );
+                        console.log(
+                           `Added data: ${problemName} ${companyName} ${count}`
+                        );
+                     } else {
+                        console.error(
+                           `Invalid count value for ${problemName} ${companyName}`
+                        );
+                     }
                   }
                } else {
                   console.error(`Company not found: ${companyName}`);

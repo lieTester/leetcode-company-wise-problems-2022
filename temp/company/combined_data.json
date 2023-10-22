@@ -714,7 +714,7 @@
       "num_occur": [4, 6, 2, 4, 5, "3", "3", 10, 2]
    },
    {
-      "problem_name": "Inorder Successor In BST",
+      "problem_name": "Inorder Successor in BST",
       "company": ["Adobe", "Facebook", "Google", "Microsoft"],
       "num_occur": [2, 6, "3", "11"]
    },
@@ -1028,7 +1028,7 @@
       "num_occur": [5, 9, 4, 3, 2, "3", "6", 2, 2]
    },
    {
-      "problem_name": "Two Sum II - Input array is sorted",
+      "problem_name": "Two Sum II - Input Array Is Sorted",
       "company": ["Adobe", "Amazon", "Apple", "Google", "Microsoft", "Yahoo"],
       "num_occur": [5, 11, 3, "4", "2", 2]
    },
@@ -2184,7 +2184,7 @@
       ]
    },
    {
-      "problem_name": "4 Sum",
+      "problem_name": "4Sum",
       "company": [
          "Adobe",
          "Amazon",
@@ -2370,7 +2370,7 @@
       "num_occur": [13, 11, 4, 2, 4, "5", "2", 2, 2, 2, 2]
    },
    {
-      "problem_name": "ZigZag Conversion",
+      "problem_name": "Zigzag Conversion",
       "company": ["Adobe", "Amazon", "Paypal"],
       "num_occur": [4, 5, 2]
    },
@@ -4013,7 +4013,7 @@
       "num_occur": [1]
    },
    {
-      "problem_name": "Friend Circles",
+      "problem_name": "Number of Provinces",
       "company": ["Amazon", "Apple", "Bloomberg"],
       "num_occur": [3, 3, 2]
    },
@@ -4822,7 +4822,7 @@
       "num_occur": [31, 4, 16, 5, "5", 5, "7", 5, "5", 36]
    },
    {
-      "problem_name": "Add and Search Word - Data structure design",
+      "problem_name": "Design Add and Search Words Data Structure",
       "company": [
          "Amazon",
          "Apple",
@@ -4870,7 +4870,7 @@
       "num_occur": [6, 2, 2, 2, 8, "2", "2", "4"]
    },
    {
-      "problem_name": "Implement Trie",
+      "problem_name": "Implement Trie (Prefix Tree)",
       "company": [
          "Amazon",
          "Apple",
@@ -5399,7 +5399,7 @@
       "num_occur": [3, "2"]
    },
    {
-      "problem_name": "Insert Intervals",
+      "problem_name": "Insert Interval",
       "company": ["Amazon", "Facebook", "Google", "LinkedIn", "Robinhood"],
       "num_occur": [5, 5, "11", 9, 3]
    },
@@ -5474,7 +5474,7 @@
       "num_occur": [3, 2, "2", "2", 3]
    },
    {
-      "problem_name": "Implement strStr()",
+      "problem_name": "Find the Index of the First Occurrence in a String",
       "company": ["Amazon", "Apple", "Facebook", "Google", "Microsoft", "Uber"],
       "num_occur": [7, 2, 3, "4", "4", 2]
    },
@@ -5530,7 +5530,7 @@
    {
       "problem_name": "Maximum Number of Balls in a Box",
       "company": ["AppDynamics", "Microsoft"],
-      "num_occur": ["Lucid", "2"]
+      "num_occur": ["1", "2"]
    },
    {
       "problem_name": "Check if Numbers Are Ascending in a Sentence",
@@ -6137,7 +6137,7 @@
    {
       "problem_name": "Smallest Value of the Rearranged Number",
       "company": ["Cognizant"],
-      "num_occur": ["T-mobile"]
+      "num_occur": ["1"]
    },
    {
       "problem_name": "Largest BST Subtree",
@@ -6376,7 +6376,7 @@
       "num_occur": [2, 1, 2]
    },
    {
-      "problem_name": "Make Two Arrays Equal by Reversing Sub-arrays",
+      "problem_name": "Make Two Arrays Equal by Reversing Subarrays",
       "company": ["Facebook"],
       "num_occur": [4]
    },
@@ -6678,7 +6678,7 @@
       "num_occur": [7, "5", 2]
    },
    {
-      "problem_name": "Read N Characters Given Read4 II - Call multiple times",
+      "problem_name": "Read N Characters Given read4 II - Call Multiple Times",
       "company": ["Facebook", "Google", "Lyft", "Microsoft"],
       "num_occur": [2, "4", 8, "2"]
    },
@@ -6719,8 +6719,8 @@
    },
    {
       "problem_name": "Minimum Length of String After Deleting Similar Ends",
-      "company": ["Goldman Sachs"],
-      "num_occur": ["Amazon"]
+      "company": ["Goldman Sachs", "Amazon"],
+      "num_occur": [1, 1]
    },
    {
       "problem_name": "Perform String Shifts",
@@ -7558,7 +7558,7 @@
       "num_occur": [1]
    },
    {
-      "problem_name": "Bulb Switcher III",
+      "problem_name": "Number of Times Binary String Is Prefix-Aligned",
       "company": ["Grab", "Microsoft"],
       "num_occur": [4, "2"]
    },
@@ -7588,7 +7588,7 @@
       "num_occur": [1]
    },
    {
-      "problem_name": "Most Visited Sector in a Circular Track",
+      "problem_name": "Most Visited Sector in  a Circular Track",
       "company": ["IBM"],
       "num_occur": [6]
    },
@@ -7661,12 +7661,12 @@
    {
       "problem_name": "Lexicographically Smallest String After Applying Operations",
       "company": ["JP Morgan"],
-      "num_occur": ["JPMorgan"]
+      "num_occur": ["1"]
    },
    {
       "problem_name": "Display Table of Food Orders in a Restaurant",
       "company": ["JP Morgan"],
-      "num_occur": ["JPMorgan"]
+      "num_occur": ["1"]
    },
    {
       "problem_name": "Determine Color of a Chessboard Square",
@@ -8107,7 +8107,7 @@
    {
       "problem_name": "Most Beautiful Item for Each Query",
       "company": ["Postmates"],
-      "num_occur": ["razorpay"]
+      "num_occur": ["1"]
    },
    {
       "problem_name": "Determine if Two Strings Are Close",
@@ -8337,8 +8337,8 @@
    },
    {
       "problem_name": "Binary Gap",
-      "company": ["Twitter"],
-      "num_occur": ["eBay"]
+      "company": ["Twitter", "eBay"],
+      "num_occur": [1, 1]
    },
    {
       "problem_name": "Design Log Storage System",
@@ -8348,7 +8348,7 @@
    {
       "problem_name": "Power of Four",
       "company": ["Two Sigma"],
-      "num_occur": ["Wix"]
+      "num_occur": ["1"]
    },
    {
       "problem_name": "Intersection of Multiple Arrays",

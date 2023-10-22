@@ -61,7 +61,7 @@ async function createQuestionsAndTags() {
       // temp to check the total que added
       const jsonString = JSON.stringify(titleData);
       // Specify the file path where you want to save the array
-      const fileOutput = "./temp/questions/checkOuput.json";
+      const fileOutput = "./temp/questions/totalQuestionsAddedInDb.json";
       // Write the JSON string to the file
       fs.writeFile(fileOutput, jsonString, (err) => {
          if (err) {

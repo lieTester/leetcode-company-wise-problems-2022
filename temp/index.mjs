@@ -2,12 +2,13 @@ import fs from "fs";
 
 function quetionList() {
    // Read the data from the old JSON file
-   const rawData = fs.readFileSync("questions/questions.json", "utf-8");
+   const rawData = fs.readFileSync("./temp/questions/questions.json", "utf-8");
    const oldData = JSON.parse(rawData);
 
    // Extract the desired fields from the old data
    const newData = oldData.questions.map((question) => ({
       acRate: question.acRate,
+      frontendQuestionId: question.frontendQuestionId,
       status: question.status,
       difficulty: question.difficulty,
       title: question.title,
@@ -17,7 +18,7 @@ function quetionList() {
 
    // Write the extracted data to a new JSON file
    fs.writeFileSync(
-      "questions/newDataQuestions.json",
+      "./temp/questions/newDataQuestions.json",
       JSON.stringify(newData, null, 2)
    );
 }
