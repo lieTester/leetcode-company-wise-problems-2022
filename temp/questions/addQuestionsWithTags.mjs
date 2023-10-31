@@ -3,37 +3,38 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-async function createQuestionsAndTags() {
+async function createProblemsAndTags() {
    try {
-      // Read the questions and tags data from your JSON file
+      // Read the problems and tags data from your JSON file
       const filePath = "./temp/questions/newDataQuestions.json"; // Replace with the path to your JSON file
       const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
       let titleData = {};
       let index = 0;
       for (const item of data) {
-         const { title, titleSlug, difficulty, status, topicTags } = item;
+         const { title, titleSlug, difficulty, topicTags, frontEndId } = item;
 
-         const que = await prisma.question_Bank.findFirst({
+         const problem = await prisma.problem.findFirst({
             where: { titleSlug: titleSlug },
          });
-         if (que) {
+         if (problem) {
             titleData[index] = title;
             index++;
             continue;
          }
 
-         // Create the question with the given data
-         const question = await prisma.question_Bank.create({
+         // Create the problem with the given data
+         const createdProblem = await prisma.problem.create({
             data: {
                title,
-               titleSlug,
+               description: "Add a description here", // You can customize this
                difficulty,
-               status,
+               frontEndId,
+               titleSlug,
             },
          });
 
-         // Find or create the tags and associate them with the question
+         // Find or create the tags and associate them with the problem
          for (const tagName of topicTags) {
             let tag = await prisma.tag.findFirst({ where: { name: tagName } });
 
@@ -46,9 +47,9 @@ async function createQuestionsAndTags() {
                });
             }
 
-            // Associate the tag with the question
-            await prisma.question_Bank.update({
-               where: { id: question.id },
+            // Associate the tag with the problem
+            await prisma.problem.update({
+               where: { id: createdProblem.id },
                data: {
                   tags: {
                      connect: { id: tag.id },
@@ -58,10 +59,10 @@ async function createQuestionsAndTags() {
          }
       }
 
-      // temp to check the total que added
+      // temp to check the total problems added
       const jsonString = JSON.stringify(titleData);
       // Specify the file path where you want to save the array
-      const fileOutput = "./temp/questions/totalQuestionsAddedInDb.json";
+      const fileOutput = "./temp/questions/totalProblemsAddedInDb.json";
       // Write the JSON string to the file
       fs.writeFile(fileOutput, jsonString, (err) => {
          if (err) {
@@ -71,13 +72,13 @@ async function createQuestionsAndTags() {
          }
       });
 
-      console.log("Questions and tags added to the database successfully");
+      console.log("Problems and tags added to the database successfully");
    } catch (error) {
-      console.error("Error adding questions and tags to the database:", error);
+      console.error("Error adding problems and tags to the database:", error);
    } finally {
       await prisma.$disconnect();
    }
 }
 
-// Execute the function to add questions and tags to the database
-createQuestionsAndTags();
+// Execute the function to add problems and tags to the database
+createProblemsAndTags();

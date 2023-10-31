@@ -22,7 +22,7 @@ function quetionList() {
       JSON.stringify(newData, null, 2)
    );
 }
-quetionList();
+// quetionList();
 
 function extractTags() {
    function createSlug(tagName) {
@@ -53,3 +53,47 @@ function extractTags() {
    console.log(`Tags and slugs extracted and saved to ${outputFilePath}`);
 }
 // extractTags();
+
+const filterStriverList = () => {
+   const rawData = fs.readFileSync(
+      "./temp/questions/questions-striver.json",
+      "utf-8"
+   );
+   const jsonData = JSON.parse(rawData);
+   const extractedData = [];
+
+   // Iterate through the JSON data and extract the required information
+   jsonData.forEach((item) => {
+      item.topics.forEach((topic) => {
+         const tagsArray = topic.tags.split(",").map((tag) => tag.trim());
+         let titleSlug = "";
+
+         if (topic.p2_link) {
+            const p2LinkParts = topic.p2_link.split("/");
+            titleSlug = p2LinkParts[p2LinkParts.length - 2];
+         } else {
+            titleSlug = topic["title"].toLowerCase().split(" ").join("-");
+         }
+
+         let dayTitle = topic.day_title.split(" and ").map((tag) => tag.trim());
+
+         extractedData.push({
+            p1_link: topic.p1_link,
+            p2_link: topic.p2_link,
+            Companytags: tagsArray,
+            difficulty: "Medium",
+            title: topic.title,
+            titleSlug,
+            topicTags: dayTitle,
+         });
+      });
+   });
+   // Write the extracted data to a new JSON file
+   fs.writeFileSync(
+      "./temp/questions/newDataQuestions-striver.json",
+      JSON.stringify(extractedData, null, 2)
+   );
+   console.log(extractedData);
+};
+
+// filterStriverList();

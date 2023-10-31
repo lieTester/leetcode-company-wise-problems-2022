@@ -5,14 +5,14 @@ import pLimit from "p-limit"; // Import the p-limit library
 const prisma = new PrismaClient();
 const limit = pLimit(5); // Limit the concurrency to 5 connections
 
-// Function to add company question data to the database
-async function addCompanyQuestion(problemName, companies, numOccurs) {
+// Function to add company problem data to the database
+async function addCompanyProblem(problemName, companies, numOccurs) {
    try {
-      const question = await prisma.question_Bank.findFirst({
+      const problem = await prisma.problem.findFirst({
          where: { title: problemName },
       });
 
-      if (question) {
+      if (problem) {
          await Promise.all(
             companies.map(async (companyName, i) => {
                const company = await prisma.company.findFirst({
@@ -20,38 +20,28 @@ async function addCompanyQuestion(problemName, companies, numOccurs) {
                });
 
                if (company) {
-                  const companyQuestion =
-                     await prisma.companyQuestion.findFirst({
-                        where: {
-                           AND: [
-                              { companyId: company.id },
-                              { questionId: question.id },
-                           ],
+                  const companyProblem = await prisma.companyProblem.findFirst({
+                     where: {
+                        AND: [
+                           { companyId: company.id },
+                           { problemId: problem.id },
+                        ],
+                     },
+                  });
+                  if (!companyProblem) {
+                     await prisma.companyProblem.create({
+                        data: {
+                           company: {
+                              connect: { id: company.id },
+                           },
+                           problem: {
+                              connect: { id: problem.id },
+                           },
+
+                           count: parseInt(numOccurs[i], 10),
                         },
                      });
-                  if (!companyQuestion) {
-                     const count = parseInt(numOccurs[i], 10);
-                     if (!isNaN(count)) {
-                        await prisma.companyQuestion.create({
-                           data: {
-                              company: {
-                                 connect: { id: company.id },
-                              },
-                              question: {
-                                 connect: { id: question.id },
-                              },
-                              count: count,
-                           },
-                        });
-
-                        console.log(
-                           `Added data: ${problemName} ${companyName} ${count}`
-                        );
-                     } else {
-                        console.error(
-                           `Invalid count value for ${problemName} ${companyName}`
-                        );
-                     }
+                     console.log(`Added data: ${problemName} ${companyName} `);
                   }
                } else {
                   console.error(`Company not found: ${companyName}`);
@@ -59,10 +49,10 @@ async function addCompanyQuestion(problemName, companies, numOccurs) {
             })
          );
       } else {
-         console.error(`Question not found: ${problemName}`);
+         console.error(`Problem not found: ${problemName}`);
       }
    } catch (error) {
-      console.error("Error adding data to the database:", problemName);
+      console.error("Error adding data to the database:", problemName, error);
    }
 }
 
@@ -78,7 +68,7 @@ fs.readFile(jsonFilePath, "utf-8", (err, data) => {
       // Iterate over the data and add it to the database using concurrency control
       combinedData.forEach((item) => {
          const { problem_name, company, num_occur } = item;
-         limit(() => addCompanyQuestion(problem_name, company, num_occur));
+         limit(() => addCompanyProblem(problem_name, company, num_occur));
       });
    }
 });

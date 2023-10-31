@@ -5671,7 +5671,7 @@
       "num_occur": [2, 2, 1]
    },
    {
-      "problem_name": "Array Partition I",
+      "problem_name": "Array Partition",
       "company": ["Apple"],
       "num_occur": [2]
    },
@@ -5681,7 +5681,7 @@
       "num_occur": [2]
    },
    {
-      "problem_name": "Coin Change 2",
+      "problem_name": "Coin Change II",
       "company": ["Apple", "Bloomberg", "Cisco", "Goldman Sachs", "Google"],
       "num_occur": [3, 2, 2, "3", "2"]
    },
@@ -5691,7 +5691,7 @@
       "num_occur": [2]
    },
    {
-      "problem_name": "Increasing Subsequences",
+      "problem_name": "Number of Longest Increasing Subsequence",
       "company": ["Apple", "Google", "Yahoo"],
       "num_occur": [2, "2", 1]
    },
@@ -5904,7 +5904,7 @@
       "num_occur": [2]
    },
    {
-      "problem_name": "Play with Chips",
+      "problem_name": "Minimum Cost to Move Chips to The Same Position",
       "company": ["Bloomberg"],
       "num_occur": [2]
    },
@@ -6828,7 +6828,7 @@
       "num_occur": ["1"]
    },
    {
-      "problem_name": "Stock Price Fluctuation",
+      "problem_name": "Stock Price Fluctuation ",
       "company": ["Google"],
       "num_occur": ["30"]
    },
@@ -6904,8 +6904,8 @@
    },
    {
       "problem_name": "Largest Submatrix With Rearrangements",
-      "company": ["Google"],
-      "num_occur": ["Directi"]
+      "company": ["Google", "Directi"],
+      "num_occur": [1, 1]
    },
    {
       "problem_name": "Tuple with Same Product",
@@ -7553,7 +7553,7 @@
       "num_occur": ["2"]
    },
    {
-      "problem_name": "Minimum Number of Buckets Required to Collect Rainwater from Houses",
+      "problem_name": "Minimum Number of Food Buckets to Feed the Hamsters",
       "company": ["Grab"],
       "num_occur": [1]
    },
@@ -7791,8 +7791,8 @@
    },
    {
       "problem_name": "Find Missing Observations",
-      "company": ["Microsoft"],
-      "num_occur": ["Amazon"]
+      "company": ["Microsoft", "Amazon"],
+      "num_occur": [1, 1]
    },
    {
       "problem_name": "Three Divisors",

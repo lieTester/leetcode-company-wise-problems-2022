@@ -1,5 +1,4 @@
 import fs from "fs";
-import csv from "csv-parser";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
@@ -25,28 +24,37 @@ async function addCompany(name, slug) {
    }
 }
 
-// Function to read and process CSV files
-function processCSVFiles() {
-   const companySet = new Set(); // Use a Set to store distinct company names
+// Function to read and process JSON data
+function processJSONData() {
+   const companySet = new Set([]); // Use a Set to store distinct company names
 
-   const filePath = `./temp/company/combined_data.csv`;
-   fs.createReadStream(filePath)
-      .pipe(csv())
-      .on("data", (row) => {
-         // Assuming 'company' is the column containing the company name in the CSV
-         companySet.add(row.company);
-      })
-      .on("end", () => {
-         // Process the distinct company names and add them to the database
-         companySet.forEach((companyName) => {
-            // Generate a slug from the company name (e.g., replace spaces with dashes)
-            const slug = companyName.toLowerCase().replace(/ /g, "-");
-            addCompany(companyName, slug);
-         });
-         console.log("sd");
+   const filePath = `./temp/company/combined_data.json`;
+   fs.readFile(filePath, "utf-8", (err, data) => {
+      if (err) {
+         console.error("Error reading JSON file:", err);
          prisma.$disconnect();
+         return;
+      }
+
+      const jsonData = JSON.parse(data);
+
+      // Process the distinct company names and add them to the database
+      jsonData.forEach((row) => {
+         if (Array.isArray(row.company)) {
+            row.company.forEach((companyName) => {
+               companySet.add(companyName);
+            });
+         }
       });
+      companySet.forEach((company) => {
+         const slug = company.toLowerCase().replace(/ /g, "-");
+         // console.log(companySet);
+         addCompany(company, slug);
+      });
+
+      prisma.$disconnect();
+   });
 }
 
-// Run the CSV processing function
-processCSVFiles();
+// Run the JSON data processing function
+processJSONData();

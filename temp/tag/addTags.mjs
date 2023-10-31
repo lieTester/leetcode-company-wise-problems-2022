@@ -6,7 +6,7 @@ async function main() {
 
    try {
       // Read tags from tag.json
-      const tagFilePath = "./tag/tags.json"; // Replace with the path to your JSON file
+      const tagFilePath = "./temp/tag/tags.json"; // Replace with the path to your JSON file
       const tagsData = fs.readFileSync(tagFilePath, "utf-8");
       const tagsArray = JSON.parse(tagsData);
 
